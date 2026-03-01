@@ -1,0 +1,55 @@
+[2026-02-28T13:59:10.199+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-28T13:59:10.519+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.process_products manual__2026-02-28T13:58:01.673535+00:00 [queued]>
+[2026-02-28T13:59:10.662+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.process_products manual__2026-02-28T13:58:01.673535+00:00 [queued]>
+[2026-02-28T13:59:10.668+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-28T13:59:10.848+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): process_products> on 2026-02-28 13:58:01.673535+00:00
+[2026-02-28T13:59:10.893+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=595) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-02-28T13:59:10.947+0000] {standard_task_runner.py:64} INFO - Started process 600 to run task
+[2026-02-28T13:59:10.990+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'process_products', 'manual__2026-02-28T13:58:01.673535+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/etl_pipeline_dag.py', '--cfg-path', '/tmp/tmpbsnqb8hy']
+[2026-02-28T13:59:11.107+0000] {standard_task_runner.py:91} INFO - Job 12: Subtask process_products
+[2026-02-28T13:59:11.489+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_pipeline.process_products manual__2026-02-28T13:58:01.673535+00:00 [running]> on host ee8b1bd989de
+[2026-02-28T13:59:12.225+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='process_products' AIRFLOW_CTX_EXECUTION_DATE='2026-02-28T13:58:01.673535+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-28T13:58:01.673535+00:00'
+[2026-02-28T13:59:12.227+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-28T13:59:12.246+0000] {run_pipeline.py:33} INFO - START processing file: products.csv
+[2026-02-28T13:59:12.250+0000] {validate.py:43} INFO - Starting validation for file: products.csv
+[2026-02-28T13:59:18.257+0000] {validate.py:12} INFO - Loading validation schema: validation/products.yaml
+[2026-02-28T13:59:18.258+0000] {run_pipeline.py:138} ERROR - FAILED processing file: products.csv
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/run_pipeline.py", line 39, in run_etl
+    is_valid, errors, valid_df, quarantine_df = validate(proc_path, filename)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/validate.py", line 51, in validate
+    schema = load_schema(filename)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/validate.py", line 14, in load_schema
+    with open(schema_path) as f:
+         ^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'validation/products.yaml'
+[2026-02-28T13:59:33.290+0000] {audit_logger.py:64} ERROR - Failed to write audit log
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/run_pipeline.py", line 39, in run_etl
+    is_valid, errors, valid_df, quarantine_df = validate(proc_path, filename)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/validate.py", line 51, in validate
+    schema = load_schema(filename)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/validate.py", line 14, in load_schema
+    with open(schema_path) as f:
+         ^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'validation/products.yaml'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/audit_logger.py", line 22, in log_audit
+    cur.execute("""
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "pg_type_typname_nsp_index"
+DETAIL:  Key (typname, typnamespace)=(etl_audit_id_seq, 2200) already exists.
+
+[2026-02-28T13:59:33.391+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-02-28T13:59:33.392+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-28T13:59:33.414+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_pipeline, task_id=process_products, run_id=manual__2026-02-28T13:58:01.673535+00:00, execution_date=20260228T135801, start_date=20260228T135910, end_date=20260228T135933
+[2026-02-28T13:59:33.636+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-02-28T13:59:33.651+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

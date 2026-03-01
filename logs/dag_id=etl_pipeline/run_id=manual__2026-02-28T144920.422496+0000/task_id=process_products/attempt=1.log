@@ -1,0 +1,29 @@
+[2026-02-28T14:50:58.305+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-28T14:50:58.370+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.process_products manual__2026-02-28T14:49:20.422496+00:00 [queued]>
+[2026-02-28T14:50:58.389+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.process_products manual__2026-02-28T14:49:20.422496+00:00 [queued]>
+[2026-02-28T14:50:58.389+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-28T14:50:58.494+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): process_products> on 2026-02-28 14:49:20.422496+00:00
+[2026-02-28T14:50:58.517+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=1123) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-02-28T14:50:58.522+0000] {standard_task_runner.py:64} INFO - Started process 1125 to run task
+[2026-02-28T14:50:58.523+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'process_products', 'manual__2026-02-28T14:49:20.422496+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/etl_pipeline_dag.py', '--cfg-path', '/tmp/tmpwpxjlf3a']
+[2026-02-28T14:50:58.526+0000] {standard_task_runner.py:91} INFO - Job 30: Subtask process_products
+[2026-02-28T14:50:58.885+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_pipeline.process_products manual__2026-02-28T14:49:20.422496+00:00 [running]> on host ee8b1bd989de
+[2026-02-28T14:50:59.333+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='process_products' AIRFLOW_CTX_EXECUTION_DATE='2026-02-28T14:49:20.422496+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-28T14:49:20.422496+00:00'
+[2026-02-28T14:50:59.340+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-28T14:50:59.363+0000] {run_pipeline.py:33} INFO - START processing file: products.csv
+[2026-02-28T14:50:59.371+0000] {validate.py:43} INFO - Starting validation for file: products.csv
+[2026-02-28T14:50:59.610+0000] {validate.py:12} INFO - Loading validation schema: config/products.yaml
+[2026-02-28T14:50:59.853+0000] {schema_validator.py:111} INFO - Schema validation completed | Valid rows: 1080 | Quarantined rows: 0
+[2026-02-28T14:51:00.042+0000] {validate.py:114} INFO - Validation successful for file: products.csv
+[2026-02-28T14:51:00.047+0000] {load.py:365} INFO - Starting load → products.csv → table: products
+[2026-02-28T14:51:00.048+0000] {load.py:81} INFO - Loading schema for DB load: config/products.yaml
+[2026-02-28T14:51:00.210+0000] {load.py:385} WARNING - File already processed — skipping: products.csv
+[2026-02-28T14:51:01.312+0000] {run_pipeline.py:134} INFO - SUCCESS products.csv
+[2026-02-28T14:51:01.314+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-02-28T14:51:01.315+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-28T14:51:01.345+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_pipeline, task_id=process_products, run_id=manual__2026-02-28T14:49:20.422496+00:00, execution_date=20260228T144920, start_date=20260228T145058, end_date=20260228T145101
+[2026-02-28T14:51:08.634+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-02-28T14:51:08.837+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-02-28T14:51:09.615+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

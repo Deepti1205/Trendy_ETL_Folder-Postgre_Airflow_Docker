@@ -1,0 +1,26 @@
+[2026-02-28T14:50:45.188+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-28T14:50:45.222+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.wait_for_products manual__2026-02-28T14:49:20.422496+00:00 [queued]>
+[2026-02-28T14:50:45.233+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.wait_for_products manual__2026-02-28T14:49:20.422496+00:00 [queued]>
+[2026-02-28T14:50:45.234+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-28T14:50:47.239+0000] {taskinstance.py:2330} INFO - Executing <Task(FileSensor): wait_for_products> on 2026-02-28 14:49:20.422496+00:00
+[2026-02-28T14:50:47.258+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=1120) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-02-28T14:50:47.263+0000] {standard_task_runner.py:64} INFO - Started process 1122 to run task
+[2026-02-28T14:50:47.270+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'wait_for_products', 'manual__2026-02-28T14:49:20.422496+00:00', '--job-id', '29', '--raw', '--subdir', 'DAGS_FOLDER/etl_pipeline_dag.py', '--cfg-path', '/tmp/tmplbk9cktd']
+[2026-02-28T14:50:47.273+0000] {standard_task_runner.py:91} INFO - Job 29: Subtask wait_for_products
+[2026-02-28T14:50:48.151+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_pipeline.wait_for_products manual__2026-02-28T14:49:20.422496+00:00 [running]> on host ee8b1bd989de
+[2026-02-28T14:50:50.691+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='wait_for_products' AIRFLOW_CTX_EXECUTION_DATE='2026-02-28T14:49:20.422496+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-28T14:49:20.422496+00:00'
+[2026-02-28T14:50:50.696+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-28T14:50:50.698+0000] {baseoperator.py:400} WARNING - FileSensor.execute cannot be called outside TaskInstance!
+[2026-02-28T14:50:50.716+0000] {base.py:84} INFO - Using connection ID 'fs_default' for task execution.
+[2026-02-28T14:50:50.717+0000] {filesystem.py:85} INFO - Poking for file /opt/***/data/incoming/products.csv
+[2026-02-28T14:50:50.724+0000] {filesystem.py:89} INFO - Found File /opt/***/data/incoming/products.csv last modified: 20260212172652
+[2026-02-28T14:50:50.726+0000] {base.py:294} INFO - Success criteria met. Exiting.
+[2026-02-28T14:50:50.727+0000] {filesystem.py:85} INFO - Poking for file /opt/***/data/incoming/products.csv
+[2026-02-28T14:50:50.733+0000] {filesystem.py:89} INFO - Found File /opt/***/data/incoming/products.csv last modified: 20260212172652
+[2026-02-28T14:50:50.734+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-28T14:50:50.749+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_pipeline, task_id=wait_for_products, run_id=manual__2026-02-28T14:49:20.422496+00:00, execution_date=20260228T144920, start_date=20260228T145045, end_date=20260228T145050
+[2026-02-28T14:50:51.031+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-02-28T14:50:51.096+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-02-28T14:50:51.230+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

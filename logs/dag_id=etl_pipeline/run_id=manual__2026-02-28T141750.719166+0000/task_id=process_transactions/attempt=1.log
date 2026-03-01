@@ -1,0 +1,39 @@
+[2026-02-28T14:20:37.300+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-28T14:20:37.411+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.process_transactions manual__2026-02-28T14:17:50.719166+00:00 [queued]>
+[2026-02-28T14:20:37.445+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.process_transactions manual__2026-02-28T14:17:50.719166+00:00 [queued]>
+[2026-02-28T14:20:37.465+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-28T14:20:37.781+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): process_transactions> on 2026-02-28 14:17:50.719166+00:00
+[2026-02-28T14:20:37.962+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=808) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-02-28T14:20:37.986+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'process_transactions', 'manual__2026-02-28T14:17:50.719166+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/etl_pipeline_dag.py', '--cfg-path', '/tmp/tmpmqvdk21h']
+[2026-02-28T14:20:38.226+0000] {standard_task_runner.py:91} INFO - Job 22: Subtask process_transactions
+[2026-02-28T14:20:38.225+0000] {standard_task_runner.py:64} INFO - Started process 828 to run task
+[2026-02-28T14:20:41.757+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_pipeline.process_transactions manual__2026-02-28T14:17:50.719166+00:00 [running]> on host ee8b1bd989de
+[2026-02-28T14:20:43.563+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='process_transactions' AIRFLOW_CTX_EXECUTION_DATE='2026-02-28T14:17:50.719166+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-28T14:17:50.719166+00:00'
+[2026-02-28T14:20:43.566+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-28T14:20:45.604+0000] {run_pipeline.py:33} INFO - START processing file: transactions.csv
+[2026-02-28T14:20:45.760+0000] {validate.py:43} INFO - Starting validation for file: transactions.csv
+[2026-02-28T14:20:50.010+0000] {validate.py:12} INFO - Loading validation schema: config/transactions.yaml
+[2026-02-28T14:21:18.232+0000] {schema_validator.py:111} INFO - Schema validation completed | Valid rows: 42 | Quarantined rows: 58
+[2026-02-28T14:23:06.084+0000] {validate.py:114} INFO - Validation successful for file: transactions.csv
+[2026-02-28T14:23:08.797+0000] {run_pipeline.py:138} ERROR - FAILED processing file: transactions.csv
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/run_pipeline.py", line 60, in run_etl
+    valid_df, ref_quarantine = validate_referential_integrity(valid_df)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/validators/referential_validator.py", line 27, in validate_referential_integrity
+    customers = fetch_reference_set("customers", "customer_id")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/validators/referential_validator.py", line 10, in fetch_reference_set
+    cur.execute(f"SELECT {column} FROM {table}")
+psycopg2.errors.UndefinedTable: relation "customers" does not exist
+LINE 1: SELECT customer_id FROM customers
+                                ^
+
+[2026-02-28T14:23:17.685+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-02-28T14:23:17.706+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-28T14:23:18.218+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_pipeline, task_id=process_transactions, run_id=manual__2026-02-28T14:17:50.719166+00:00, execution_date=20260228T141750, start_date=20260228T142037, end_date=20260228T142318
+[2026-02-28T14:24:30.722+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-02-28T14:26:11.508+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-28T14:26:13.354+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
