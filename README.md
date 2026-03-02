@@ -2,7 +2,9 @@
 
 ## Architecture
 
-<img width="997" height="571" alt="image" src="https://github.com/user-attachments/assets/efd6c5cd-fd7d-4831-b02b-34cfbe4e05a6" />
+<img width="1003" height="579" alt="image" src="https://github.com/user-attachments/assets/40c3f5af-c478-470f-a987-9f1d19b1bfb9" />
+
+
 
 
 
