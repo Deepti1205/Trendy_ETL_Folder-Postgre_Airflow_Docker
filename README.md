@@ -1,2 +1,5 @@
-# Trendy_ETL_Folder-Postgre_Airflow_Docker
+# ETL: Folder-Postgre Using Airflow
+
+<img width="1434" height="215" alt="image" src="https://github.com/user-attachments/assets/f89ef71f-0677-4b5d-b3d3-eafd1260b4ca" />
+
 
